@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="primary_text_size">16sp</dimen>
+    <dimen name="secondary_text_size">14sp</dimen>
+    <dimen name="secondary_small_text_size">12sp</dimen>
+
+    <dimen name="item_feeds_image_size">48dp</dimen>
+</resources>

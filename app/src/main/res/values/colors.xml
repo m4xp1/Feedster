@@ -5,4 +5,7 @@
     <color name="colorPrimaryDark">#FFA000</color>
     <color name="colorPrimary">#FFC107</color>
     <color name="colorAccent">#FF5722</color>
+
+    <color name="textPrimary">#dd000000</color>
+    <color name="textSecondary">#89000000</color>
 </resources>

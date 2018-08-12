@@ -4,5 +4,23 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+    </style>
+
+    <style name="PrimaryText" parent="AppTheme">
+        <item name="android:textSize">@dimen/primary_text_size</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="SecondaryText" parent="AppTheme">
+        <item name="android:textSize">@dimen/secondary_text_size</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
+    <style name="SecondaryText.Small" parent="AppTheme">
+        <item name="android:textSize">@dimen/secondary_small_text_size</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 </resources>
