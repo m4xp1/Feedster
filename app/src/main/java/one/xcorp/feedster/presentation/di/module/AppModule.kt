@@ -6,12 +6,7 @@ import dagger.Provides
 import one.xcorp.feedster.presentation.Application
 import javax.inject.Singleton
 
-@Module
-class AppModule(private val application: Application) {
+@Module(includes = [ViewModelModule::class])
+class AppModule {
 
-    @Provides
-    @Singleton
-    internal fun provideAppContext(): Context {
-        return application
-    }
 }
