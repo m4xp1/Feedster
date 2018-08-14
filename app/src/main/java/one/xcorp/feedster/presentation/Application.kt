@@ -1,26 +1,23 @@
 package one.xcorp.feedster.presentation
 
-import one.xcorp.feedster.presentation.di.component.AppComponent
+import android.app.Activity
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import one.xcorp.feedster.presentation.di.component.DaggerAppComponent
-import one.xcorp.feedster.presentation.di.module.AppModule
+import javax.inject.Inject
 
-class Application : android.app.Application() {
+class Application : android.app.Application(), HasActivityInjector {
 
-    private lateinit var appComponent: AppComponent
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
 
-        initializeInjector();
+        DaggerAppComponent.builder()
+                .application(this).build()
+                .inject(this)
     }
 
-    private fun initializeInjector() {
-        appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build();
-    }
-
-    fun getAppComponent(): AppComponent {
-        return appComponent
-    }
+    override fun activityInjector() = dispatchingAndroidInjector
 }
