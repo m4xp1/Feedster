@@ -17,7 +17,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.view.activity.MainActivity">
+        tools:context=".presentation.view.activity.FeedActivity">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
