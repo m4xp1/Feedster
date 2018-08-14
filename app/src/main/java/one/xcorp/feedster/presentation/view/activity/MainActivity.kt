@@ -1,4 +1,4 @@
-package one.xcorp.feedster.ui
+package one.xcorp.feedster.presentation.view.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
