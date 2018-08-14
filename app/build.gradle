@@ -27,41 +27,51 @@ android {
     }
 }
 
+ext {
+    archVersion = '1.1.1'
+    dagger2 = '2.16'
+    glide = '4.7.1'
+    retrofit2 = '2.4.0'
+    okHttp3 = '3.11.0'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
 
     // UI
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation "com.android.support:appcompat-v7:$support_v7"
+    implementation "com.android.support.constraint:constraint-layout:1.1.2"
+    implementation "com.android.support:recyclerview-v7:27.1.1"
 
-    // MVVM
-    implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    // Architecture
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    implementation "android.arch.lifecycle:reactivestreams:$archVersion"
+    kapt "android.arch.lifecycle:compiler:$archVersion"
 
     // Dagger2
-    implementation "com.google.dagger:dagger:2.16"
-    kapt "com.google.dagger:dagger-compiler:2.16"
+    implementation "com.google.dagger:dagger:$dagger2"
+    implementation "com.google.dagger:dagger-android:$dagger2"
+    kapt "com.google.dagger:dagger-compiler:$dagger2"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2"
 
     // RxJava2
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
     implementation 'com.github.pwittchen:reactivenetwork-rx2:2.1.0'
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.7.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+    implementation "com.github.bumptech.glide:glide:$glide"
+    kapt "com.github.bumptech.glide:compiler:$glide"
 
     // Retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation "com.squareup.retrofit2:converter-gson:2.4.0"
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit2"
+
+    // OkHttp3
+    implementation "com.squareup.okhttp3:okhttp:$okHttp3"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3"
 
     // Gson
     implementation 'com.google.code.gson:gson:2.8.5'
