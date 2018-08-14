@@ -1,75 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?android:colorBackground"
-    android:paddingBottom="@dimen/content_margin"
-    android:paddingEnd="@dimen/content_margin"
-    android:paddingStart="@dimen/content_margin"
-    android:paddingTop="@dimen/half_content_padding">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="@dimen/list_item_image_size"
-        android:layout_height="@dimen/list_item_image_size"
-        android:contentDescription="@null"
-        android:scaleType="centerInside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title" />
+    <data>
 
-    <TextView
-        android:id="@+id/title"
-        style="@style/PrimaryText"
-        android:layout_width="0dp"
+        <variable
+            name="feed"
+            type="one.xcorp.feedster.presentation.model.FeedModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/half_content_margin"
-        android:layout_marginStart="@dimen/half_content_margin"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@+id/users"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Title" />
+        android:background="?android:colorBackground"
+        android:paddingBottom="@dimen/content_margin"
+        android:paddingEnd="@dimen/content_margin"
+        android:paddingStart="@dimen/content_margin"
+        android:paddingTop="@dimen/half_content_padding">
 
-    <TextView
-        android:id="@+id/description"
-        style="@style/SecondaryText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/half_content_margin"
-        android:layout_marginStart="@dimen/half_content_margin"
-        android:ellipsize="end"
-        android:maxLines="2"
-        app:layout_constraintEnd_toStartOf="@+id/users"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:text="Description" />
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/list_item_image_size"
+            android:layout_height="@dimen/list_item_image_size"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            app:imageUrl="@{feed.imageUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title" />
 
-    <TextView
-        android:id="@+id/url"
-        style="@style/SecondaryText.Small"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/half_content_margin"
-        android:layout_marginStart="@dimen/half_content_margin"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@+id/users"
-        app:layout_constraintStart_toEndOf="@+id/image"
-        app:layout_constraintTop_toBottomOf="@+id/description"
-        tools:text="https://github.com/m4xp1/Feedster" />
+        <TextView
+            android:id="@+id/title"
+            style="@style/PrimaryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/half_content_margin"
+            android:layout_marginStart="@dimen/half_content_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{feed.title}"
+            app:layout_constraintEnd_toStartOf="@+id/users"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Title" />
 
-    <TextView
-        android:id="@+id/users"
-        style="@style/SecondaryText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/ic_users"
-        android:gravity="center"
-        android:maxLength="4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title"
-        tools:text="57" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/description"
+            style="@style/SecondaryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/half_content_margin"
+            android:layout_marginStart="@dimen/half_content_margin"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{feed.description}"
+            app:layout_constraintEnd_toStartOf="@+id/users"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Description" />
+
+        <TextView
+            android:id="@+id/url"
+            style="@style/SecondaryText.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/half_content_margin"
+            android:layout_marginStart="@dimen/half_content_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{feed.url}"
+            app:layout_constraintEnd_toStartOf="@+id/users"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/description"
+            tools:text="https://github.com/m4xp1/Feedster" />
+
+        <TextView
+            android:id="@+id/users"
+            style="@style/SecondaryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_users"
+            android:gravity="center"
+            android:maxLength="4"
+            android:text="@{String.valueOf(feed.users)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            tools:text="57" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
