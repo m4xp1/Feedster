@@ -19,6 +19,11 @@
         <item name="android:textColor">?android:textColorSecondary</item>
     </style>
 
+    <style name="SecondaryText.Error" parent="AppTheme">
+        <item name="android:textSize">@dimen/secondary_text_size</item>
+        <item name="android:textColor">@color/textError</item>
+    </style>
+
     <style name="SecondaryText.Small" parent="AppTheme">
         <item name="android:textSize">@dimen/secondary_small_text_size</item>
         <item name="android:textColor">?android:textColorSecondary</item>
