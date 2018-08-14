@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Feedster</string>
+
+    <string name="unable_load_data">Unable to load data,\ncheck your network connection</string>
 </resources>
