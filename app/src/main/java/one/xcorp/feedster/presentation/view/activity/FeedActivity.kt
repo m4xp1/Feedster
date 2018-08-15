@@ -36,6 +36,8 @@ class FeedActivity : AppCompatActivity(), Injectable {
         adapter = FeedAdapter()
         binding.recycler.adapter = adapter
         initFeedList(feedViewModel)
+
+        feedViewModel.loadData()
     }
 
     private fun initFeedList(viewModel: FeedViewModel) {
