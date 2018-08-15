@@ -38,7 +38,7 @@ class FeedViewModel @Inject constructor(
 
     private fun executeLoadingFeeds() {
         disposables.clear()
-        disposables.add(feedInteractor.getListFeeds()
+        disposables.add(feedInteractor.getFeeds()
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe { _feeds.value = loading(_feeds.value?.data) }
                 .map { success(it.toModel()) }
