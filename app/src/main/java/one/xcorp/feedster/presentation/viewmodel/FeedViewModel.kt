@@ -29,7 +29,8 @@ class FeedViewModel @Inject constructor(
 
     fun loadData() {
         if (_feeds.value == null) {
-            disposables.add(feedInteractor.getListFeeds().subscribeOn(Schedulers.io())
+            disposables.add(feedInteractor.getListFeeds()
+                    .subscribeOn(Schedulers.io())
                     .doOnSubscribe { _feeds.value = loading(null) }
                     .map { success(it.toModel()) }
                     .observeOn(AndroidSchedulers.mainThread())
