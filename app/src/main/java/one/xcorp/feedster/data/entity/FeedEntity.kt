@@ -3,7 +3,7 @@ package one.xcorp.feedster.data.entity
 import com.google.gson.annotations.SerializedName
 
 data class FeedEntity(
-        @SerializedName("imageUrl")
+        @SerializedName("image")
         val imageUrl: String = "",
         @SerializedName("title")
         val title: String = "",
