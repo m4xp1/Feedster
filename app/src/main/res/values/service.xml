@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feedster_service_url">https://api.feedster.me/</string>
+
+    <string name="feedster_service_user">m4xp1</string>
+    <string name="feedster_service_password">Open55open!</string>
+</resources>
