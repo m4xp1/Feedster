@@ -14,20 +14,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:colorBackground"
-        android:paddingBottom="@dimen/content_margin"
         android:paddingEnd="@dimen/content_margin"
         android:paddingStart="@dimen/content_margin"
         android:paddingTop="@dimen/half_content_padding">
 
         <ImageView
             android:id="@+id/image"
-            android:layout_width="@dimen/list_item_image_size"
-            android:layout_height="@dimen/list_item_image_size"
+            android:layout_width="@dimen/list_item_image_width"
+            android:layout_height="@dimen/list_item_image_height"
             android:contentDescription="@null"
             android:scaleType="centerInside"
+            app:gone="@{feed.imageUrl.isEmpty()}"
             app:imageUrl="@{feed.imageUrl}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/title" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Space
+            android:id="@+id/spaceImage"
+            android:layout_width="@dimen/half_content_margin"
+            android:layout_height="wrap_content"
+            app:gone="@{feed.imageUrl.isEmpty()}"
+            app:layout_constraintBottom_toBottomOf="@+id/image"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toTopOf="@+id/image" />
 
         <TextView
             android:id="@+id/title"
@@ -35,12 +44,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_content_margin"
-            android:layout_marginStart="@dimen/half_content_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{feed.title}"
             app:layout_constraintEnd_toStartOf="@+id/users"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintStart_toEndOf="@+id/spaceImage"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Title" />
 
@@ -50,12 +58,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/half_content_margin"
-            android:layout_marginStart="@dimen/half_content_margin"
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{feed.description}"
             app:layout_constraintEnd_toStartOf="@+id/users"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="Description" />
 
@@ -64,13 +71,12 @@
             style="@style/SecondaryText.Small"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/half_content_margin"
-            android:layout_marginStart="@dimen/half_content_margin"
+            android:layout_marginTop="@dimen/half_content_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{feed.url}"
-            app:layout_constraintEnd_toStartOf="@+id/users"
-            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description"
             tools:text="https://github.com/m4xp1/Feedster" />
 
@@ -86,5 +92,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/title"
             tools:text="57" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/half_content_margin"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/url" />
     </android.support.constraint.ConstraintLayout>
 </layout>
