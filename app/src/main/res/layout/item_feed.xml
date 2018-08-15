@@ -82,7 +82,7 @@
             android:drawableTop="@drawable/ic_users"
             android:gravity="center"
             android:maxLength="4"
-            android:text="@{String.valueOf(feed.users)}"
+            android:text="@{feed.users}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/title"
             tools:text="57" />

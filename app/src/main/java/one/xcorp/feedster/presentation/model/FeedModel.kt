@@ -6,7 +6,7 @@ data class FeedModel(val imageUrl: String,
                      val title: String,
                      val description: String,
                      val url: String,
-                     val users: Int) {
+                     val users: String) {
 
     companion object {
 
