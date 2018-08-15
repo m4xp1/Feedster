@@ -9,4 +9,6 @@
     <color name="textPrimary">#dd000000</color>
     <color name="textSecondary">#89000000</color>
     <color name="textError">#ff6054</color>
+
+    <color name="purple">#512DA8</color>
 </resources>
