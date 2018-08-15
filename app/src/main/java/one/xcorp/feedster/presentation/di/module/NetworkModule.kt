@@ -19,7 +19,9 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
-        return HttpClient.create(Level.BODY)
+    fun provideOkHttpClient(context: Context): OkHttpClient {
+        // Пояснения по токену см. в HttpClient
+        val token = context.getString(R.string.feedster_service_token)
+        return HttpClient.create(token, Level.BODY)
     }
 }
