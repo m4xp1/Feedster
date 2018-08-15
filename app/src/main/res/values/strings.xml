@@ -2,4 +2,6 @@
     <string name="app_name">Feedster</string>
 
     <string name="unable_load_data">Unable to load data,\ncheck your network connection</string>
+    <string name="unknown_error">An unknown error occurred\n
+        while trying to perform the operation,\ncontact the developer.</string>
 </resources>
