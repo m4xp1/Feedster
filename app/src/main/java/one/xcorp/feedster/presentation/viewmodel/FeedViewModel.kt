@@ -21,28 +21,29 @@ class FeedViewModel @Inject constructor(
         private val feedInteractor: FeedInteractor) : ViewModel() {
 
     private val _feeds = MutableLiveData<StatusModel<List<FeedModel>>>()
-
-    private val disposables = CompositeDisposable()
-
     val feeds: LiveData<StatusModel<List<FeedModel>>>
         get() = _feeds
 
-    fun loadData() {
+    private val disposables = CompositeDisposable()
+
+    fun loadFeeds() {
         if (_feeds.value == null) {
-            disposables.add(feedInteractor.getListFeeds()
-                    .subscribeOn(Schedulers.io())
-                    .doOnSubscribe { _feeds.value = loading(null) }
-                    .map { success(it.toModel()) }
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ _feeds.value = it }, { _feeds.value = getError(it) }))
+            executeLoadingFeeds()
         }
     }
 
-    fun reload() {
-        disposables.clear()
-        _feeds.value = null
+    fun reloadFeeds() {
+        executeLoadingFeeds()
+    }
 
-        loadData()
+    private fun executeLoadingFeeds() {
+        disposables.clear()
+        disposables.add(feedInteractor.getListFeeds()
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe { _feeds.value = loading(_feeds.value?.data) }
+                .map { success(it.toModel()) }
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ _feeds.value = it }, { _feeds.value = getError(it) }))
     }
 
     override fun onCleared() {

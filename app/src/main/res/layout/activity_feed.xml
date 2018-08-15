@@ -8,6 +8,10 @@
         <import type="one.xcorp.feedster.presentation.model.StatusModel" />
 
         <variable
+            name="viewModel"
+            type="one.xcorp.feedster.presentation.viewmodel.FeedViewModel" />
+
+        <variable
             name="status"
             type="one.xcorp.feedster.presentation.model.StatusModel" />
     </data>
@@ -19,17 +23,23 @@
         android:layout_height="match_parent"
         tools:context=".presentation.view.activity.FeedActivity">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            app:layoutManager="LinearLayoutManager"
-            app:visible="@{status.type == StatusModel.Type.SUCCESS}"
-            tools:listitem="@layout/item_feed" />
+            app:onRefreshListener="@{() -> viewModel.reloadFeeds()}"
+            app:refreshing="@{status.type == StatusModel.Type.LOADING &amp;&amp; status.data != null}">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/item_feed" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <TextView
-            android:id="@+id/error"
             style="@style/SecondaryText.Error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,7 +56,6 @@
             tools:visibility="visible" />
 
         <ProgressBar
-            android:id="@+id/progress"
             android:layout_width="@dimen/progress_bar_size"
             android:layout_height="@dimen/progress_bar_size"
             android:visibility="gone"
@@ -54,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:visible="@{status.type == StatusModel.Type.LOADING}"
+            app:visible="@{status.type == StatusModel.Type.LOADING &amp;&amp; status.data == null}"
             tools:visibility="visible" />
     </android.support.constraint.ConstraintLayout>
 </layout>

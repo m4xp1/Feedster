@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import dagger.android.AndroidInjection
 import one.xcorp.feedster.R
@@ -33,11 +34,16 @@ class FeedActivity : AppCompatActivity(), Injectable {
         feedViewModel = ViewModelProviders
                 .of(this, viewModelFactory).get(FeedViewModel::class.java)
 
+        binding.viewModel = feedViewModel
+
+        binding.refresh.setColorSchemeColors(
+                ContextCompat.getColor(this, R.color.purple))
+
         adapter = FeedAdapter()
         binding.recycler.adapter = adapter
         initFeedList(feedViewModel)
 
-        feedViewModel.loadData()
+        feedViewModel.loadFeeds()
     }
 
     private fun initFeedList(viewModel: FeedViewModel) {
