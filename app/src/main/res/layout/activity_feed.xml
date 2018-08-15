@@ -35,13 +35,14 @@
             android:layout_height="wrap_content"
             android:clickable="false"
             android:gravity="center"
-            android:text="@string/unable_load_data"
+            android:text="@{status.message}"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:visible="@{status.type == StatusModel.Type.ERROR}"
+            tools:text="@string/unable_load_data"
             tools:visibility="visible" />
 
         <ProgressBar
